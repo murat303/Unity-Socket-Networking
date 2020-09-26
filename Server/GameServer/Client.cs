@@ -39,7 +39,22 @@ namespace GameServer
 
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
-                //TODO: send welcome packet
+                ServerSend.Welcome(id, "Welcome to the Server!");
+            }
+
+            public void SendData(Packet packet)
+            {
+                try
+                {
+                    if (socket != null)
+                    {
+                        stream.BeginWrite(packet.ToArray(), 0, packet.Length(), null, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error sending data to player {id} via TCP: {ex}");
+                }
             }
 
             private void ReceiveCallback(IAsyncResult _result)
@@ -65,6 +80,7 @@ namespace GameServer
                     //TODO : disconnect
                 }
             }
+            
         }
     }
 }
