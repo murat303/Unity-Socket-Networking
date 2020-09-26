@@ -9,6 +9,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/Server/GameServer/obj/
+/Server/GameServer/bin/
+
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
