@@ -25,14 +25,4 @@ public class ClientSend : MonoBehaviour
             SendTCPData(packet);
         }
     }
-
-    public static void UDPTestReceived()
-    {
-        using (Packet packet = new Packet((int)ClientPackets.udpTectReceived))
-        {
-            packet.Write("Received a UDP packet.");
-
-            SendUDPData(packet);
-        }
-    }
 }
