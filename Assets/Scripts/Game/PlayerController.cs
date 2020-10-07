@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        
+        SendInputToServer();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SendInputToServer() //For prevent cheating, server must calculate position
     {
-        
+        bool[] inputs = new bool[]
+        {
+            Input.GetKey(KeyCode.W),
+            Input.GetKey(KeyCode.S),
+            Input.GetKey(KeyCode.A),
+            Input.GetKey(KeyCode.D)
+        };
+
+        ClientSend.PlayerMovement(inputs);
     }
 }

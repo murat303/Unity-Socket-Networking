@@ -36,6 +36,7 @@ public class Client : MonoBehaviour
         tcp.Connect();
     }
 
+    #region TCP
     public class TCP
     {
         public TcpClient socket;
@@ -113,10 +114,10 @@ public class Client : MonoBehaviour
             int packetLength = 0;
             receivedData.SetBytes(data);
 
-            if(receivedData.UnreadLength() >= 4)
+            if (receivedData.UnreadLength() >= 4)
             {
                 packetLength = receivedData.ReadInt();
-                if(packetLength <= 0)
+                if (packetLength <= 0)
                 {
                     return true;
                 }
@@ -127,7 +128,7 @@ public class Client : MonoBehaviour
                 var packetBytes = receivedData.ReadBytes(packetLength);
                 ThreadManager.ExecuteOnMainThread(() =>
                 {
-                    using(Packet packet = new Packet(packetBytes))
+                    using (Packet packet = new Packet(packetBytes))
                     {
                         int packetId = packet.ReadInt();
                         packetHandlers[packetId](packet);
@@ -145,15 +146,17 @@ public class Client : MonoBehaviour
                 }
             }
 
-            if(packetLength <= 1)
+            if (packetLength <= 1)
             {
                 return true;
             }
 
             return false;
         }
-    }
+    } 
+    #endregion
 
+    #region UDP
     public class UDP
     {
         public UdpClient socket;
@@ -199,7 +202,7 @@ public class Client : MonoBehaviour
                 var data = socket.EndReceive(result, ref endPoint);
                 socket.BeginReceive(ReceiveCallback, null);
 
-                if(data.Length < 4)
+                if (data.Length < 4)
                 {
                     //TODO: disconnect
                     return;
@@ -230,13 +233,17 @@ public class Client : MonoBehaviour
                 }
             });
         }
-    }
+    } 
+    #endregion
 
     private void InitializeClientData()
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ServerPackets.welcome, ClientHandle.Welcome }
+            { (int)ServerPackets.welcome, ClientHandle.Welcome },
+            { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
+            { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
+            { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation }
         };
         Debug.Log("Initialized packets");
     }

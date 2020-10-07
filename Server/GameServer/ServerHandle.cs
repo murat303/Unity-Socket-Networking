@@ -17,5 +17,17 @@ namespace GameServer
 
             Server.clients[fromClient].SendIntoGame(username);
         }
+
+        internal static void PlayerMovement(int fromClient, Packet packet)
+        {
+            var inputs = new bool[packet.ReadInt()];
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                inputs[i] = packet.ReadBool();
+            }
+            var rotation = packet.ReadQuaternion();
+
+            Server.clients[fromClient].player.SetInput(inputs, rotation);
+        }
     }
 }

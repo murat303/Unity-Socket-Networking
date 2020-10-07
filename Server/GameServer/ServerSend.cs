@@ -49,6 +49,7 @@ namespace GameServer
                 Server.clients[i].udp.SendData(packet);
             }
         }
+
         private static void SendUDPDataToAll(int exceptClient, Packet packet)
         {
             packet.WriteLength();
@@ -84,6 +85,27 @@ namespace GameServer
                 packet.Write(player.rotation);
 
                 SendTCPData(toClient, packet);
+            }
+        }
+
+        public static void PlayerPosition(Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerPosition))
+            {
+                packet.Write(player.id);
+                packet.Write(player.position);
+
+                SendUDPDataToAll(packet);
+            }
+        }
+        public static void PlayerRotation(Player player)
+        {
+            using (Packet packet = new Packet((int)ServerPackets.playerRotation))
+            {
+                packet.Write(player.id);
+                packet.Write(player.rotation);
+
+                SendUDPDataToAll(player.id, packet);
             }
         }
         #endregion
