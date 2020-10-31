@@ -730,6 +730,8 @@ MonoBehaviour:
     type: 3}
   itemSpawnerPrefab: {fileID: 5505895309636432121, guid: aafebc40af5996f40822772564f6c86d,
     type: 3}
+  projectilePrefab: {fileID: 3815373649484149546, guid: c09d2437705050949b524312e0e6bcb8,
+    type: 3}
 --- !u!4 &1506048549
 Transform:
   m_ObjectHideFlags: 0
