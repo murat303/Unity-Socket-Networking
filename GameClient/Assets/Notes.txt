@@ -1,3 +1,4 @@
+-youtube watch, sunucu üzerinde yayınlama
 -world canvas ile diğer oyuncuların ismini göster
 -ui can göster, düşman ve diğer oyuncuların canını göster
 -her karakterin farklı bir noktada spawn olması
