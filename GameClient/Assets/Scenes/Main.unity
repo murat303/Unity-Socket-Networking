@@ -728,6 +728,8 @@ MonoBehaviour:
     type: 3}
   playerPrefab: {fileID: 2262606633105658080, guid: 46740e566ac0b0c4bb2fe3733fbd0232,
     type: 3}
+  itemSpawnerPrefab: {fileID: 5505895309636432121, guid: aafebc40af5996f40822772564f6c86d,
+    type: 3}
 --- !u!4 &1506048549
 Transform:
   m_ObjectHideFlags: 0
@@ -1235,6 +1237,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1873580034452270457, guid: 2013ff4c70c56d144a7951ba4cc95724,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6961317574718996656, guid: 2013ff4c70c56d144a7951ba4cc95724,
         type: 3}
       propertyPath: m_Name
