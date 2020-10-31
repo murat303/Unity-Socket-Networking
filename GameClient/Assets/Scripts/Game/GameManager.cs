@@ -29,8 +29,7 @@ public class GameManager : MonoBehaviour
         }
 
         var pm = player.GetComponent<PlayerManager>();
-        pm.id = id;
-        pm.userName = userName;
+        pm.Initialize(id, userName);
         players.Add(id, pm);
     }
 }
