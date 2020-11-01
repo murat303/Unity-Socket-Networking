@@ -20,7 +20,7 @@ public class ClientSend : MonoBehaviour
         using (Packet packet = new Packet((int)ClientPackets.welcomeReceived))
         {
             packet.Write(Client.instance.myId);
-            packet.Write(UIManager.instance.userNameField.text);
+            packet.Write(UIManager.ins.userNameField.text);
 
             SendTCPData(packet);
         }

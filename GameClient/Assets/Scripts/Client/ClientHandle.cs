@@ -23,7 +23,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 position = packet.ReadVector3();
         Quaternion rotation = packet.ReadQuaternion();
 
-        GameManager.instance.SpawnPlayer(id, username, position, rotation);
+        GameManager.ins.SpawnPlayer(id, username, position, rotation);
     }
 
     public static void PlayerPosition(Packet packet)
@@ -73,7 +73,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _spawnerPosition = _packet.ReadVector3();
         bool _hasItem = _packet.ReadBool();
 
-        GameManager.instance.CreateItemSpawner(_spawnerId, _spawnerPosition, _hasItem);
+        GameManager.ins.CreateItemSpawner(_spawnerId, _spawnerPosition, _hasItem);
     }
 
     public static void ItemSpawned(Packet _packet)
@@ -89,7 +89,7 @@ public class ClientHandle : MonoBehaviour
         int _byPlayer = _packet.ReadInt();
 
         GameManager.itemSpawners[_spawnerId].ItemPickedUp();
-        GameManager.players[_byPlayer].itemCount++;
+        GameManager.players[_byPlayer].ItemAdd(1);
     }
 
     public static void SpawnProjectile(Packet _packet)
@@ -98,8 +98,8 @@ public class ClientHandle : MonoBehaviour
         Vector3 _position = _packet.ReadVector3();
         int _thrownByPlayer = _packet.ReadInt();
 
-        GameManager.instance.SpawnProjectile(_projectileId, _position);
-        GameManager.players[_thrownByPlayer].itemCount--;
+        GameManager.ins.SpawnProjectile(_projectileId, _position);
+        GameManager.players[_thrownByPlayer].ItemAdd(-1);
     }
 
     public static void ProjectilePosition(Packet _packet)
@@ -124,7 +124,7 @@ public class ClientHandle : MonoBehaviour
         int _enemyId = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
 
-        GameManager.instance.SpawnEnemy(_enemyId, _position);
+        GameManager.ins.SpawnEnemy(_enemyId, _position);
     }
 
     public static void EnemyPosition(Packet _packet)

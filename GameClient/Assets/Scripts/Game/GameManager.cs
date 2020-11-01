@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager ins;
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
     public static Dictionary<int, ItemSpawner> itemSpawners = new Dictionary<int, ItemSpawner>();
     public static Dictionary<int, ProjectileManager> projectiles = new Dictionary<int, ProjectileManager>();
@@ -16,11 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject enemyPrefab;
 
-
     private void Awake()
     {
-        if (instance == null) instance = this;
-        else if (instance != this) Destroy(this);
+        if (ins == null) ins = this;
+        else if (ins != this) Destroy(this);
     }
 
     public void SpawnPlayer(int id, string userName, Vector3 position, Quaternion rotation)

@@ -1,8 +1,9 @@
--youtube watch, sunucu üzerinde yayınlama
--world canvas ile diğer oyuncuların ismini göster
--ui can göster, düşman ve diğer oyuncuların canını göster
--her karakterin farklı bir noktada spawn olması
--oyuncuların seçtiği karakterle spawn olabilmesi
+-ai canını göster
+-öldürdüğüm ai ve player sayısını gösterme
 
+-Can pakedi
+-Ölünce gersisayım ve random spawn noktalarından başlama
+-öldürülen bot ve kullanıcı sayısı
+-oyuncuların seçtiği karakterle spawn olabilmesi
 -koşma animasyonu multiplayer
 -polygon assetleri ile level tasarimi
