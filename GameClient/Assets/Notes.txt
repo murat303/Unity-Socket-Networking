@@ -1,3 +1,4 @@
+-Sonradan giren kullanıcılara, oyundaki kullanıcıların isimleri gözükmüyor (PlayerName) yazıyor, muhtemelen health'de yanlış
 -ai canını göster
 -öldürdüğüm ai ve player sayısını gösterme
 
